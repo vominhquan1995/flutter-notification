@@ -1,0 +1,47 @@
+------------------  Config Android  ------------------
+1. Regis account firebase 
+2. Add your Android app to the Firebase project
+3. Remember android package name to config on project (com.notification.example)
+4. Download file google-services.json
+5. Open file android/build.gradle -> add dependencies 'classpath 'com.google.gms:google-services:4.0.0''
+6. Open file android/app/build.gradle -> 
+    - on defaultConfig set applicationId with package name  config on firebase
+    - add dependencies 'implementation 'com.google.firebase:firebase-core:15.0.0'';
+    - on bottom of the file add 'apply plugin: 'com.google.gms.google-services'' => Sync gradle
+7. Open file AndroidManifest.xml to regis permision event click of notification 
+         <intent-filter>
+                <action android:name="FLUTTER_NOTIFICATION_CLICK" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>   				
+------------------  Config IOS  ------------------
+
+
+------------------  Config FLUTTER  ------------------
+1. Open file pubspec.yaml add dependencies : 
+  firebase_core:
+  firebase_messaging:
+  firebase_database: 
+  firebase_storage:
+  flutter_local_notifications
+=> run command  flutter packages upgrade
+2. On main file import package
+  import 'dart:io';
+  import 'package:firebase_messaging/firebase_messaging.dart';
+  import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+3. Declaration variable Firebase Cloud Messaging and variable Flutter Local Notifications Plugin
+  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
+4. Create function firebaseCloudMessaging_Listeners to listen event notify
+   4.1 Detect platform if ios call function request permision iOS_Permission()
+	if (Platform.isIOS) iOS_Permission();
+   4.2 Get token and update token to server firebase
+       firebaseMessaging.getToken().then((token) {
+        update(token);
+      });
+   4.3 Listen event on refresh token to update token to server
+   4.4 Init local notify , regis listen event selectNotification
+   4.5 Config event when revice notify on 3 state : onMessage, onLaunch, onResume
+5. Done
+    
+
+
