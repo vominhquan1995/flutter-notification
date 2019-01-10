@@ -16,6 +16,7 @@ class _DetailNotificationPageState extends State<DetailNotificationPage> {
   void initState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -29,7 +30,10 @@ class _DetailNotificationPageState extends State<DetailNotificationPage> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: (){ Navigator.pop(context);},
+          onPressed: () {
+           Navigator.of(context).pop();
+            // Navigator.of(context).pushNamed("/notification");
+          },
           tooltip: 'Quay lại',
           child: const Icon(Icons.keyboard_return),
         ),

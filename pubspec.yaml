@@ -26,6 +26,7 @@ dependencies:
   flutter_app_badger: ^1.0.2
   badges: ^0.0.6
   sqflite: any
+  badge:
 
 dev_dependencies:
   flutter_test:
