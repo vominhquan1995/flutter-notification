@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html_view/flutter_html_view.dart';
+import 'package:notification_example/common/Notification.dart';
+import 'package:notification_example/database/BadgeHelper.dart';
 
 class DetailNotificationPage extends StatefulWidget {
   //luu bien id, cau hinh bat buoc
@@ -11,12 +13,15 @@ class DetailNotificationPage extends StatefulWidget {
       new _DetailNotificationPageState();
 }
 
-class _DetailNotificationPageState extends State<DetailNotificationPage> {
+class _DetailNotificationPageState extends State<DetailNotificationPage>  {
+  var dbHelper = BadgeHelper();
   @override
   void initState() {
     super.initState();
+    setState(() {
+      this.dbHelper.removeBadge(1);
+    });
   }
-
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(

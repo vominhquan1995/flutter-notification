@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:notification_example/pages/DetailNotificationPage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -42,7 +43,7 @@ class _NotificationPageState extends State<NotificationPage>
 
             ),
             body: new ListView.builder(
-                itemCount: listNotification.length,
+                itemCount: 15,
                 itemBuilder: (context, i) {
                   return Container(
                     padding: EdgeInsets.all(10.0),
@@ -52,7 +53,7 @@ class _NotificationPageState extends State<NotificationPage>
                             style: BorderStyle.solid, color: Colors.black26),
                       ),
                     ),
-                    child: NotificationItem(listNotification[i]),
+                    child: NotificationItem(listNotification[0]),
                   );
                 }));
   }
