@@ -33,6 +33,7 @@ class BadgeHelper {
     var dbClient = await db;
     List<Map> list = await dbClient.rawQuery('SELECT id,name,count FROM badge_setting');
     List badge = list.toList();
+    FlutterAppBadger.updateBadgeCount(badge[0]['count']);
     return badge;
   }
   Future increaseBadge(id) async  {
